@@ -1,0 +1,51 @@
+var Store = require('../stores/Store');
+var Actions = require('../actions/Actions');
+var React = require('react');
+var Bootstrap = require('react-bootstrap');
+var Col = Bootstrap.Col;
+var Navbar = Bootstrap.Navbar;
+var Row = Bootstrap.Row;
+var Marty = require('marty');
+var CoilSettings = require('./CoilSettings.react');
+var WrapsSummary = require('./WrapsSummary.react');
+
+var Home = React.createClass({
+    handleChange: function(coil) {
+        Actions.updateCoil(coil);
+    },
+
+    render: function() {
+        return (
+            <div>
+                <Navbar brand='Recoil' />
+
+                <div className='container'>
+                    <Row>
+                        <Col xs={12} md={6}>
+                            <CoilSettings
+                                {...this.props['coil']}
+                                onChange={this.handleChange}
+                            />
+                        </Col>
+
+                        <Col xs={12} md={6}>
+                            <WrapsSummary {...this.props['wraps']} />
+                        </Col>
+                    </Row>
+                </div>
+            </div>
+        );
+    }
+});
+
+module.exports = Marty.createContainer(Home, {
+    listenTo: Store,
+    fetch: {
+        coil: function() {
+            return Store.getCoil()
+        },
+        wraps: function() {
+            return Store.getWraps()
+        }
+    }
+});
