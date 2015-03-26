@@ -23,7 +23,7 @@ var getWraps = function(coil) {
     var wireLength = Math.round(h);
 
     return {
-        total: total.toFixed(2),
+        total: total.toString(),
         full: full.toString(),
         half: half,
         wireLength: wireLength.toString()

@@ -1,5 +1,5 @@
-var Marty = require('marty');
 var Constants = require('../constants/Constants');
+var Marty = require('marty');
 
 var Actions = Marty.createActionCreators({
     id: 'Actions',
