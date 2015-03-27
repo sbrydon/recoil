@@ -10,6 +10,7 @@ var gutil = require('gulp-util');
 var jest = require('jest-cli');
 var less = require('gulp-less');
 var minifyCSS = require('gulp-minify-css');
+var newer = require('gulp-newer');
 var reactify = require('reactify');
 var rename = require('gulp-rename');
 var source = require('vinyl-source-stream');
@@ -24,6 +25,9 @@ var lessFiles = './src/less/**/*.less';
 var distDirectory = './dist/';
 var jsBundleFilename = 'bundle.js';
 var cssBundleFilename = 'bundle.css';
+
+var fontFiles = './node_modules/bootstrap/fonts/*';
+var distFontDirectory = distDirectory + 'fonts';
 
 var debug = true;
 
@@ -74,9 +78,20 @@ var bundleLess = function() {
         .pipe(gulp.dest(distDirectory));
 };
 
-gulp.task('default', function() {
+var copyFonts = function() {
+    gulp.src(fontFiles)
+        .pipe(newer(distFontDirectory))
+        .pipe(gulp.dest(distFontDirectory));
+};
+
+var build = function() {
     bundleJs();
     bundleLess();
+    copyFonts();
+};
+
+gulp.task('default', function() {
+    build();
 
     var watcher = watchify(bundler);
     watcher.on('update', function() {
@@ -98,6 +113,5 @@ gulp.task('test', function(done) {
 
 gulp.task('build', function() {
     debug = false;
-    bundleJs();
-    bundleLess();
+    build();
 });
