@@ -1,22 +1,54 @@
+var Actions = require('../actions/Actions');
 var React = require('react');
+var PropTypes = React.PropTypes;
 
 var Bootstrap = require('react-bootstrap');
+var Button = Bootstrap.Button;
+var Glyphicon = Bootstrap.Glyphicon;
 var Input = Bootstrap.Input;
 var Panel = Bootstrap.Panel;
 
-var CoilSettings = React.createClass({
-    handleChange: function() {
-        this.props.onChange({
-            coilNumber: this.refs.coilNumber.getValue(),
-            wireDiameter: this.refs.wireDiameter.getValue(),
-            innerDiameter: this.refs.innerDiameter.getValue(),
-            targetResistance: this.refs.targetResistance.getValue()
-        });
+var SettingsHeader = React.createClass({
+    handleClick: function() {
+        Actions.restart();
     },
 
     render: function() {
         return (
-            <Panel header='Settings' bsStyle='primary'>
+            <div>
+                <span>Settings</span>
+                <Button
+                    className='pull-right'
+                    bsSize='xsmall'
+                    onClick={this.handleClick}
+                >
+                    <Glyphicon glyph='repeat' /> Restart
+                </Button>
+            </div>
+        )
+    }
+});
+
+var CoilSettings = React.createClass({
+    propTypes: {
+        coilNumber: PropTypes.number.isRequired,
+        wireDiameter: PropTypes.number.isRequired,
+        innerDiameter: PropTypes.number.isRequired,
+        targetResistance: PropTypes.number.isRequired
+    },
+
+    handleChange: function() {
+        Actions.update({
+            coilNumber: +this.refs.coilNumber.getValue(),
+            wireDiameter: +this.refs.wireDiameter.getValue(),
+            innerDiameter: +this.refs.innerDiameter.getValue(),
+            targetResistance: +this.refs.targetResistance.getValue()
+        })
+    },
+
+    render: function() {
+        return (
+            <Panel header={<SettingsHeader />} bsStyle='primary'>
                 <form>
                     <Input
                         ref='coilNumber'

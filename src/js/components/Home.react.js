@@ -1,4 +1,3 @@
-var Actions = require('../actions/Actions');
 var CoilSettings = require('./CoilSettings.react');
 var Marty = require('marty');
 var React = require('react');
@@ -11,10 +10,6 @@ var Navbar = Bootstrap.Navbar;
 var Row = Bootstrap.Row;
 
 var Home = React.createClass({
-    handleChange: function(coil) {
-        Actions.updateCoil(coil);
-    },
-
     render: function() {
         return (
             <div>
@@ -23,10 +18,7 @@ var Home = React.createClass({
                 <div className='container'>
                     <Row>
                         <Col xs={12} md={6}>
-                            <CoilSettings
-                                {...this.props['coil']}
-                                onChange={this.handleChange}
-                            />
+                            <CoilSettings {...this.props['coil']} />
                         </Col>
 
                         <Col xs={12} md={6}>

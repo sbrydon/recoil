@@ -4,8 +4,12 @@ var Marty = require('marty');
 var Actions = Marty.createActionCreators({
     id: 'Actions',
 
-    updateCoil: function(coil) {
-        this.dispatch(Constants.UPDATE_COIL, coil);
+    update: function(coil) {
+        this.dispatch(Constants.UPDATE, coil);
+    },
+
+    restart: function() {
+        this.dispatch(Constants.RESTART);
     }
 });
 

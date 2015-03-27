@@ -1,10 +1,18 @@
 var React = require('react');
+var PropTypes = React.PropTypes;
 
 var Bootstrap = require('react-bootstrap');
 var Panel = Bootstrap.Panel;
 var Table = Bootstrap.Table;
 
 var WrapsSummary = React.createClass({
+    propTypes: {
+        total: PropTypes.number.isRequired,
+        full: PropTypes.number.isRequired,
+        half: PropTypes.string.isRequired,
+        wireLength: PropTypes.number.isRequired
+    },
+
     render: function() {
         return (
             <Panel header='Summary' bsStyle='info'>

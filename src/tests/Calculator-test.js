@@ -21,10 +21,10 @@ describe('calculator', function() {
         var wraps = Calculator.getWraps(coil);
 
         expect(wraps).toEqual({
-            total: '8.05',
-            full: '8',
+            total: 8.05,
+            full: 8,
             half: '9/8',
-            wireLength: '89'
+            wireLength: 89
         });
     });
 
@@ -33,10 +33,10 @@ describe('calculator', function() {
         var wraps = Calculator.getWraps(coil);
 
         expect(wraps).toEqual({
-            total: '6.11',
-            full: '6',
+            total: 6.11,
+            full: 6,
             half: '7/6',
-            wireLength: '56'
+            wireLength: 56
         });
     });
 
@@ -45,10 +45,10 @@ describe('calculator', function() {
         var wraps = Calculator.getWraps(coil);
 
         expect(wraps).toEqual({
-            total: '8.52',
-            full: '9',
+            total: 8.52,
+            full: 9,
             half: '9/8',
-            wireLength: '106'
+            wireLength: 106
         });
     });
 
@@ -57,10 +57,10 @@ describe('calculator', function() {
         var wraps = Calculator.getWraps(coil);
 
         expect(wraps).toEqual({
-            total: '7.95',
-            full: '8',
+            total: 7.95,
+            full: 8,
             half: '8/7',
-            wireLength: '112'
+            wireLength: 112
         });
     });
 });

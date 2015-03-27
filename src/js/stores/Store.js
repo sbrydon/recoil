@@ -1,47 +1,49 @@
+var assign = require('object-assign');
 var Calculator = require('../utils/Calculator');
 var Constants = require('../constants/Constants');
 var Marty = require('marty');
 
-var _initialCoil = {
+var initialCoil = {
     coilNumber: 1,
     wireDiameter: 0.405,
     innerDiameter: 2.5,
     targetResistance: 1
 };
 
-var _initialState = {
-    coil: _initialCoil,
-    wraps: Calculator.getWraps(_initialCoil)
+var initialState = {
+    coil: initialCoil,
+    wraps: Calculator.getWraps(initialCoil)
 };
 
 var Store = Marty.createStore({
     id: 'Store',
 
     handlers: {
-        updateCoil: Constants.UPDATE_COIL
+        update: Constants.UPDATE,
+        restart: Constants.RESTART
     },
 
     getInitialState: function() {
-        return _initialState;
+        return initialState;
     },
 
     getCoil: function() {
-        return this.state['coil'];
+        return assign({}, this.state['coil']);
     },
 
     getWraps: function() {
-        return this.state['wraps'];
+        return assign({}, this.state['wraps']);
     },
 
-    updateCoil: function(coil) {
-        this.state['coil'] = coil;
-        this.state['wraps'] = Calculator.getWraps({
-            coilNumber: +coil.coilNumber,
-            wireDiameter: +coil.wireDiameter,
-            innerDiameter: +coil.innerDiameter,
-            targetResistance: +coil.targetResistance
+    update: function(coil) {
+        this.replaceState({
+            coil: coil,
+            wraps: Calculator.getWraps(coil)
         });
-        this.hasChanged();
+    },
+
+    restart: function() {
+        this.replaceState(initialState);
     }
 });
 
