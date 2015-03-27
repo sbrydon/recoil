@@ -33,8 +33,7 @@ var bundler = browserify({
     extensions: ['.js'],
     debug: debug,
     cache: {},
-    packageCache: {},
-    fullPaths: true
+    packageCache: {}
 });
 
 var jestConfig = {
