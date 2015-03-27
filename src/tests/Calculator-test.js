@@ -1,13 +1,13 @@
 jest.dontMock('../js/utils/Calculator');
 
-var getCoil = function(coilNum, wireDia, innerDia, targetRes) {
+function getCoil(coilNum, wireDia, innerDia, targetRes) {
     return {
         coilNumber: coilNum,
         wireDiameter: wireDia,
         innerDiameter: innerDia,
         targetResistance: targetRes
     };
-};
+}
 
 describe('calculator', function() {
     var Calculator;

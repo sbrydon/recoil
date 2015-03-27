@@ -49,12 +49,12 @@ var jestConfig = {
 };
 
 
-var errorHandler = function (error) {
+function errorHandler(error) {
     gutil.log(gutil.colors.red('Error'), error.message);
     this.end();
-};
+}
 
-var bundleJs = function() {
+function bundleJs() {
     bundler
         .bundle()
         .on('error', errorHandler)
@@ -65,9 +65,9 @@ var bundleJs = function() {
         .pipe(gulpif(!debug, rename({ suffix: '.min' })))
         .pipe(gulpif(!debug, uglify()))
         .pipe(gulp.dest(distDirectory));
-};
+}
 
-var bundleLess = function() {
+function bundleLess() {
     gulp.src(lessAppFile)
         .pipe(less())
         .on('error', errorHandler)
@@ -76,19 +76,19 @@ var bundleLess = function() {
         .pipe(gulpif(!debug, rename({ suffix: '.min' })))
         .pipe(gulpif(!debug, minifyCSS({ keepBreaks:true })))
         .pipe(gulp.dest(distDirectory));
-};
+}
 
-var copyFonts = function() {
+function copyFonts() {
     gulp.src(fontFiles)
         .pipe(newer(distFontDirectory))
         .pipe(gulp.dest(distFontDirectory));
-};
+}
 
-var build = function() {
+function build() {
     bundleJs();
     bundleLess();
     copyFonts();
-};
+}
 
 gulp.task('default', function() {
     build();

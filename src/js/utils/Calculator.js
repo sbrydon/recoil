@@ -1,4 +1,4 @@
-var getWraps = function(coil) {
+function getWraps(coil) {
     var coilNumber = coil.coilNumber;
     var wireDiameter = coil.wireDiameter;
     var innerDiameter = coil.innerDiameter;
@@ -28,7 +28,7 @@ var getWraps = function(coil) {
         half: half,
         wireLength: wireLength.toString()
     };
-};
+}
 
 module.exports = {
     getWraps: getWraps
