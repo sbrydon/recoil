@@ -31,18 +31,18 @@ var SettingsHeader = React.createClass({
 
 var CoilSettings = React.createClass({
     propTypes: {
-        coilNumber: PropTypes.number.isRequired,
-        wireDiameter: PropTypes.number.isRequired,
-        innerDiameter: PropTypes.number.isRequired,
-        targetResistance: PropTypes.number.isRequired
+        coilNumber: PropTypes.string.isRequired,
+        wireDiameter: PropTypes.string.isRequired,
+        innerDiameter: PropTypes.string.isRequired,
+        targetResistance: PropTypes.string.isRequired
     },
 
     handleChange: function() {
         Actions.update({
-            coilNumber: +this.refs.coilNumber.getValue(),
-            wireDiameter: +this.refs.wireDiameter.getValue(),
-            innerDiameter: +this.refs.innerDiameter.getValue(),
-            targetResistance: +this.refs.targetResistance.getValue()
+            coilNumber: this.refs.coilNumber.getValue(),
+            wireDiameter: this.refs.wireDiameter.getValue(),
+            innerDiameter: this.refs.innerDiameter.getValue(),
+            targetResistance: this.refs.targetResistance.getValue()
         })
     },
 

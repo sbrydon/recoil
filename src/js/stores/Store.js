@@ -3,16 +3,25 @@ var Calculator = require('../utils/Calculator');
 var Constants = require('../constants/Constants');
 var Marty = require('marty');
 
+function getWraps(coil) {
+    return Calculator.getWraps({
+        coilNumber: +coil.coilNumber,
+        wireDiameter: +coil.wireDiameter,
+        innerDiameter: +coil.innerDiameter,
+        targetResistance: +coil.targetResistance
+    });
+}
+
 var initialCoil = {
-    coilNumber: 1,
-    wireDiameter: 0.405,
-    innerDiameter: 2.5,
-    targetResistance: 1
+    coilNumber: '1',
+    wireDiameter: '0.405',
+    innerDiameter: '2.5',
+    targetResistance: '1'
 };
 
 var initialState = {
     coil: initialCoil,
-    wraps: Calculator.getWraps(initialCoil)
+    wraps: getWraps(initialCoil)
 };
 
 var Store = Marty.createStore({
@@ -38,7 +47,7 @@ var Store = Marty.createStore({
     update: function(coil) {
         this.replaceState({
             coil: coil,
-            wraps: Calculator.getWraps(coil)
+            wraps: getWraps(coil)
         });
     },
 
