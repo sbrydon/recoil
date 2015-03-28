@@ -10,7 +10,7 @@ var Panel = Bootstrap.Panel;
 
 var SettingsHeader = React.createClass({
     handleClick: function() {
-        Actions.reloadCoil();
+        Actions.resetCoil();
     },
 
     render: function() {
@@ -22,7 +22,7 @@ var SettingsHeader = React.createClass({
                     bsSize='xsmall'
                     onClick={this.handleClick}
                 >
-                    <Glyphicon glyph='repeat' /> Reload
+                    <Glyphicon glyph='repeat' /> Reset
                 </Button>
             </div>
         )

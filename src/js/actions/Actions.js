@@ -8,8 +8,8 @@ var Actions = Marty.createActionCreators({
         this.dispatch(Constants.UPDATE_COIL, coil);
     },
 
-    reloadCoil: function() {
-        this.dispatch(Constants.RELOAD_COIL);
+    resetCoil: function() {
+        this.dispatch(Constants.RESET_COIL);
     }
 });
 

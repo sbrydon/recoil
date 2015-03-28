@@ -29,7 +29,7 @@ var Store = Marty.createStore({
 
     handlers: {
         updateCoil: Constants.UPDATE_COIL,
-        reloadCoil: Constants.RELOAD_COIL
+        resetCoil: Constants.RESET_COIL
     },
 
     getInitialState: function() {
@@ -51,7 +51,7 @@ var Store = Marty.createStore({
         });
     },
 
-    reloadCoil: function() {
+    resetCoil: function() {
         this.replaceState(initialState);
     }
 });
