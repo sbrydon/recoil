@@ -10,7 +10,7 @@ var Panel = Bootstrap.Panel;
 
 var SettingsHeader = React.createClass({
     handleClick: function() {
-        Actions.restart();
+        Actions.reloadCoil();
     },
 
     render: function() {
@@ -22,7 +22,7 @@ var SettingsHeader = React.createClass({
                     bsSize='xsmall'
                     onClick={this.handleClick}
                 >
-                    <Glyphicon glyph='repeat' /> Restart
+                    <Glyphicon glyph='repeat' /> Reload
                 </Button>
             </div>
         )
@@ -38,7 +38,7 @@ var CoilSettings = React.createClass({
     },
 
     handleChange: function() {
-        Actions.update({
+        Actions.updateCoil({
             coilNumber: this.refs.coilNumber.getValue(),
             wireDiameter: this.refs.wireDiameter.getValue(),
             innerDiameter: this.refs.innerDiameter.getValue(),
@@ -67,7 +67,7 @@ var CoilSettings = React.createClass({
                         ref='wireDiameter'
                         type='select'
                         label='Wire thickness'
-                        addonBefore='AWG'
+                        addonBefore={<abbr title='American Wire Gauge'>AWG</abbr>}
                         value={this.props.wireDiameter}
                         onChange={this.handleChange}
                     >
@@ -91,6 +91,7 @@ var CoilSettings = React.createClass({
                         type='number'
                         label='Inner diameter'
                         addonAfter='mm'
+                        help='Diameter of what you are wrapping around'
                         min='0'
                         step='0.25'
                         value={this.props.innerDiameter}

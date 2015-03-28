@@ -28,8 +28,8 @@ var Store = Marty.createStore({
     id: 'Store',
 
     handlers: {
-        update: Constants.UPDATE,
-        restart: Constants.RESTART
+        updateCoil: Constants.UPDATE_COIL,
+        reloadCoil: Constants.RELOAD_COIL
     },
 
     getInitialState: function() {
@@ -44,14 +44,14 @@ var Store = Marty.createStore({
         return assign({}, this.state['wraps']);
     },
 
-    update: function(coil) {
+    updateCoil: function(coil) {
         this.replaceState({
             coil: coil,
             wraps: getWraps(coil)
         });
     },
 
-    restart: function() {
+    reloadCoil: function() {
         this.replaceState(initialState);
     }
 });

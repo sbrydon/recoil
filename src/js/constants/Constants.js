@@ -1,6 +1,6 @@
 var Marty = require('marty');
 
 module.exports = Marty.createConstants([
-    'UPDATE',
-    'RESTART'
+    'UPDATE_COIL',
+    'RELOAD_COIL'
 ]);

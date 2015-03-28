@@ -26,6 +26,12 @@ var Home = React.createClass({
                         </Col>
                     </Row>
                 </div>
+
+                <footer>
+                    <a href='https://github.com/sbrydon/recoil'>
+                        View source on GitHub
+                    </a>
+                </footer>
             </div>
         );
     }
