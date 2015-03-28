@@ -1307,3 +1307,4 @@ td.visible-print,th.visible-print{display:table-cell!important}}
 .visible-print-inline-block{display:none!important}
 @media print{.visible-print-inline-block{display:inline-block!important}
 .hidden-print{display:none!important}}
+footer{padding-top:30px;padding-bottom:30px;margin-top:80px;text-align:center;border-top:1px solid #e5e5e5}
