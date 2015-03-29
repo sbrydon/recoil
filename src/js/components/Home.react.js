@@ -6,6 +6,7 @@ var WrapsSummary = require('./WrapsSummary.react');
 
 var Bootstrap = require('react-bootstrap');
 var Col = Bootstrap.Col;
+var Grid = Bootstrap.Grid;
 var Navbar = Bootstrap.Navbar;
 var Row = Bootstrap.Row;
 
@@ -15,7 +16,7 @@ var Home = React.createClass({
             <div>
                 <Navbar brand='Recoil' />
 
-                <div className='container'>
+                <Grid>
                     <Row>
                         <Col xs={12} md={6}>
                             <CoilSettings {...this.props['coil']} />
@@ -25,7 +26,7 @@ var Home = React.createClass({
                             <WrapsSummary {...this.props['wraps']} />
                         </Col>
                     </Row>
-                </div>
+                </Grid>
 
                 <footer>
                     <a href='https://github.com/sbrydon/recoil'>
